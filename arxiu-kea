@@ -1,0 +1,52 @@
+{
+  "Dhcp4": {
+    "interfaces-config": {
+      "interfaces": ["eth0"]
+    },
+    "control-socket": {
+      "socket-type": "unix",
+      "socket-name": "/run/kea/kea4-ctrl-socket"
+    },
+    "lease-database": {
+      "type": "memfile",
+      "lfc-interval": 3600
+    },
+    "valid-lifetime": 600,
+    "max-valid-lifetime": 7200,
+    "subnet4": [
+      {
+        "id": 8,
+        "subnet": "192.168.146.60/26", //adreça
+        "pools": [
+          {
+            "pool": "192.168.146.50 - 192.168.146.59" // rang adreces
+          }
+        ],
+        "option-data": [
+          {
+            "name": "routers",
+            "data": "192.168.146.2"  // gateway address
+          },
+          {
+            "name": "broadcast-address",
+            "data": "192.168.146.63"              // broadcast
+          },
+          {
+            "name": "domain-name-servers",
+            "data": "8.8.8.8, 8.8.4.4"
+          }
+        ]
+        "reservations": [
+          {
+            "hw-address": "00:11:22:22:44:44",  // mac address
+            "ip-address": "192.168.146.3"          // adreça reservada
+          },
+          {
+            "hw-address": "AA:BB:CC:DD:ZZ:YY",  // mac address
+            "ip-address": "192.168.146.5"          // adreça reservada
+          }
+        ]
+      }
+    ]
+  }
+}
